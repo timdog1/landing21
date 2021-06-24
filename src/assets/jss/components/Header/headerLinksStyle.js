@@ -10,6 +10,9 @@ const headerLinksStyle = theme => ({
     paddingBottom: '0',
     color: 'inherit',
     display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      display: 'unset',
+    },
     alignItems: 'center',
   },
   listItem: {
@@ -21,6 +24,7 @@ const headerLinksStyle = theme => ({
     width: 'auto',
     margin: '10px',
     padding: '0',
+    textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       '&:after': {
