@@ -83,7 +83,7 @@ const Header = props => {
   }
   return (
     <AppBar className={appBarClasses}>
-      <Toolbar className={classes.container}>
+      <Toolbar className={classes.topbar}>
         {brandComponent}
         <Hidden smDown implementation="css">
           {rightLinks}

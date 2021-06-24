@@ -45,6 +45,11 @@ const headerStyle = {
     display: 'flex',
     flexWrap: 'nowrap',
   },
+  topbar: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   flex: {
     flex: 1,
   },
@@ -62,8 +67,8 @@ const headerStyle = {
     },
   },
   brandLogo: {
-    width: '150px',
-    height: '50px',
+    width: '270px',
+    height: '70px',
   },
   menuButton: {
     backgroundColor: '#fff',
@@ -107,7 +112,7 @@ const headerStyle = {
   transparent: {
     backgroundColor: 'transparent !important',
     boxShadow: 'none',
-    paddingTop: '20px',
+    // paddingTop: '20px',
     color: '#FFFFFF',
   },
   dark: {

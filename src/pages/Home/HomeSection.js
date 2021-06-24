@@ -13,14 +13,14 @@ const HomeSection = () => {
   const globalClasses = useGlobalStyles()
   return (
     <Box className={classes.homeSectionArea}>
+      <Box className={classes.videoPlayer}>
+        <video width="100%" height="auto" loop autoPlay>
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      </Box>
       <Box className={classes.homeContainer}>
         <Box className={classes.container}>
           {/* <Box className={classes.homeImage}> */}
-          <Box className={classes.videoPlayer}>
-            <video width="100%" height="auto" loop autoPlay>
-              <source src={videoSrc} type="video/mp4" />
-            </video>
-          </Box>
           <Box className={classes.content}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography className={classes.title}>What is ASTROHEDZ?</Typography>
