@@ -68,7 +68,7 @@ const headerStyle = {
   },
   brandLogo: {
     width: '270px',
-    height: '70px',
+    height: '90px',
   },
   menuButton: {
     backgroundColor: '#fff',
