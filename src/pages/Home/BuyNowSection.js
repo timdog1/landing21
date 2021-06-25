@@ -104,12 +104,16 @@ const BuyNowSection = () => {
               <Typography className={globalClasses.text21}>
                 All Astrohedz are unique and programmatically generated from four different alien species with over 800
                 possible traits, including body type, clothing, eyes, mouth, headwear, and background. Even though all
-                Astrohedz are out of this world, some are slightly ( or astronomically ) more rare than others.
-                Astrohedz are stored as ERC-721 tokens on ther Ethereum blockchain and hosted on IPFS. Purchasing
-                Astrohedz cost 0.07ETH. To access members-only areas such asthe upcoming game, Astrohodlers will need to
-                be signed into their Metamask Wallet.
+                Astrohedz are out of this world, some are slightly (or astronomically) more rare than others.
+                <br />
+                <br /> Astrohedz are stored as ERC-721 tokens on ther Ethereum blockchain and hosted on IPFS. Purchasing
+                Astrohedz cost 0.07ETH.
+                <br />
+                <br /> To access members-only areas such as the upcoming game, Astrohodlers will need to be signed into
+                their Metamask Wallet.
               </Typography>
               <Typography variant="h5" className={classes.distribution}>
+                <br />
                 FAIR DISTRIBUTION
               </Typography>
               <Typography className={globalClasses.text21}>
@@ -131,10 +135,10 @@ const BuyNowSection = () => {
               <Typography className={clsx(globalClasses.text21, classes.galaxyDescription)}>
                 When you roadmap Astrohedz, in addition to getting an awesome avatar and a provably-rare (and obviously
                 stellar ) piece of digital art, you are gaining access to an intergalactic community that will
-                participate in adn create fun activities as well as have early access ( and perkys ) in ouer upcoming
+                participate in adn create fun activities as well as have early access ( and perkys ) in our upcoming
                 game. One of the best features that the Astrohedz community offers is that Astrohodlers will play an
-                intergral part in developing our game. The game is for everyone... so we think everyone should have a
-                say in what we do?
+                integral part in developing our game. The game is for everyone... so we think everyone should have a say
+                in what we do?
               </Typography>
             </Grid>
           </Box>
@@ -175,7 +179,7 @@ const BuyNowSection = () => {
                     <Box style={{ position: 'relative' }}>
                       <Box className={classes.featureText}>
                         <Typography className={classes.featureDescription}>
-                          The Astrohedz game is Currently in development. <br />
+                          The Astrohedz game is currently in development. <br />
                           We are designing some pretty freakin&apos; awesome features.
                         </Typography>
                       </Box>
@@ -192,7 +196,7 @@ const BuyNowSection = () => {
               them) that then can then be sold or traded with other players ( on the secondary market ). <br />
               <br />
               It will be initially open to only Astrohedz NFT hodlers but will eventually open up to the public with
-              eclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
+              exclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
               FREE plot of land).
               <br />
               <br />
