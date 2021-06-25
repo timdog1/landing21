@@ -46,3 +46,23 @@
   font-family: 'RobotoThinItalic';
   src: local('RobotoThinItalic'), url(fonts/Roboto-ThinItalic.ttf);
 }
+@font-face {
+  font-family: 'DaysOneRegular';
+  src: local('DaysOneRegular'), url(fonts/DaysOne-Regular.ttf);
+}
+@font-face {
+  font-family: 'CourierPrimeBold';
+  src: local('CourierPrimeBold'), url(fonts/CourierPrime-Bold.ttf);
+}
+@font-face {
+  font-family: 'CourierPrimeBoldItalic';
+  src: local('CourierPrimeBoldItalic'), url(fonts/CourierPrime-BoldItalic.ttf);
+}
+@font-face {
+  font-family: 'CourierPrimeItalic';
+  src: local('CourierPrimeItalic'), url(fonts/CourierPrimeItalic.ttf);
+}
+@font-face {
+  font-family: 'CourierPrimeRegular';
+  src: local('CourierPrimeRegular'), url(fonts/CourierPrime-Regular.ttf);
+}

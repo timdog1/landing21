@@ -14,7 +14,7 @@ const HomeSection = () => {
   return (
     <Box className={classes.homeSectionArea}>
       <Box className={classes.videoPlayer}>
-        <video width="100%" height="auto" loop autoPlay>
+        <video autoPlay="autoPlay" controls width="100%" height="auto" loop preload="true">
           <source src={videoSrc} type="video/mp4" />
         </video>
       </Box>

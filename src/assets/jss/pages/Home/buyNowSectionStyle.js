@@ -2,36 +2,44 @@ import { container } from 'assets/jss/constants'
 import gameBottomImg from 'assets/images/Home/bg_walking.gif'
 
 const buyNowSectionStyle = {
-  ecosystemSectionArea: {
+  buyNowSectionArea: {
     width: '100%',
     position: 'relative',
+    paddingTop: 94,
   },
   quantityContainer: {
-    paddingTop: 60,
+    paddingTop: 40,
     backgroundColor: '#FF56B1',
-    paddingBottom: 25,
+  },
+  quantityTitle: {
+    color: 'black !important',
+    fontWeight: 700,
+    marginBottom: '0px !important',
+    textAlign: 'center',
   },
   container: {
     ...container,
+    paddingLeft: '30px',
+    paddingRight: '30px',
   },
   detailContainer: {
-    paddingTop: 46,
+    paddingTop: 40,
     backgroundColor: '#000000',
   },
   galaxyContainer: {
-    paddingTop: 46,
+    paddingTop: 40,
     backgroundColor: '#38EB28',
   },
   galaxyTitle: {
     color: 'black !important',
+    fontWeight: 700,
   },
   galaxyDescription: {
     color: 'black !important',
   },
   gameContainer: {
-    paddingTop: 46,
+    paddingTop: 50,
     backgroundColor: '#000000',
-    paddingBottom: 40,
   },
   featureContainer: {
     backgroundColor: '#191919',
@@ -40,6 +48,7 @@ const buyNowSectionStyle = {
     padding: 36,
     marginTop: 46,
     textAlign: 'center',
+    marginBottom: '30px',
   },
   featureText: {
     backgroundColor: 'white',
@@ -50,13 +59,18 @@ const buyNowSectionStyle = {
     fontWeight: 600,
     lineHeight: '35px',
     textAlign: 'left',
+    fontFamily: 'CourierPrimeBold',
+    fontSize: '25px',
+    transform: 'scale(0.9, 1.2)',
+    paddingTop: '25px',
+    paddingBottom: '20px',
   },
   gameBottomContainer: {
     marginBottom: '-6px',
-    // backgroundImage: 'url(' + gameBottomImg + ')',
     background: 'url(' + gameBottomImg + ') 50% 50% no-repeat rgb(249,249,249)',
     width: '100%',
-    height: '683px',
+    height: '800px',
+    backgroundSize: 'cover',
   },
   textContentArea: {
     position: 'relative',
@@ -93,24 +107,8 @@ const buyNowSectionStyle = {
     maxWidth: '300px',
     borderRadius: '10px',
   },
-  titleArea: {
-    display: 'flex',
-    justifyContent: 'center',
-    '@media (max-width: 600px)': {
-      justifyContent: 'center',
-    },
-    '@media (min-width: 600px)': {
-      justifyContent: 'center',
-    },
-    '@media (min-width: 768px)': {
-      justifyContent: 'center',
-    },
-    '@media (min-width: 960px)': {
-      justifyContent: 'center',
-    },
-    '@media (min-width: 1280px)': {
-      justifyContent: 'center',
-    },
+  titleBottom: {
+    marginBottom: '10px',
   },
   text31: {
     position: 'relative',
@@ -127,7 +125,8 @@ const buyNowSectionStyle = {
     color: '#000000',
   },
   title: {
-    fontWeight: 700,
+    fontFamily: 'DaysOneRegular',
+    // fontWeight: 700,
     '@media (max-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
     '@media (min-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
     '@media (min-width: 768px)': { fontSize: '35px', lineHeight: '50px' },
@@ -135,6 +134,7 @@ const buyNowSectionStyle = {
     '@media (min-width: 1280px)': { fontSize: '45px', lineHeight: '60px' },
     display: 'flex',
     alignItems: 'center',
+    textAlign: 'center',
     letterSpacing: '1.47px',
     color: '#FFFFFF',
     justifyContent: 'center',

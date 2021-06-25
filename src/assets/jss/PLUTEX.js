@@ -59,8 +59,9 @@ const GlobalStyle = {
   },
   text21: {
     position: 'relative',
-    fontFamily: 'Source Sans Pro',
+    fontFamily: 'CourierPrimeRegular',
     fontStyle: 'normal',
+    fontSize: '21px',
     fontWeight: 400,
     paddingBottom: 20,
     '@media (max-width: 600px)': { fontSize: '18px', lineHeight: '27px' },

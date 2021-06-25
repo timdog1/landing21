@@ -110,7 +110,8 @@ const headerStyle = {
     boxShadow: '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(233, 30, 99, 0.46)',
   },
   transparent: {
-    backgroundColor: 'transparent !important',
+    // backgroundColor: 'transparent !important',
+    backgroundColor: 'black',
     boxShadow: 'none',
     // paddingTop: '20px',
     color: '#FFFFFF',

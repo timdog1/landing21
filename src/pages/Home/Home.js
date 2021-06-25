@@ -7,11 +7,12 @@ import { Box } from '@material-ui/core'
 // core components
 import Header from 'components/Header/Header'
 import HeaderLinks from 'components/Header/HeaderLinks'
-import Footer from 'components/Footer/Footer'
+// import Footer from 'components/Footer/Footer'
 import HomeSection from 'pages/Home/HomeSection'
 import BuyNowSection from 'pages/Home/BuyNowSection'
 import RoadmapSection from 'pages/Home/RoadmapSection'
 import TeamMeetSection from 'pages/Home/TeamMeetSection'
+import FooterSection from 'pages/Home/FooterSection'
 
 // styles
 import { makeStyles } from '@material-ui/core/styles'
@@ -39,13 +40,16 @@ const Home = () => {
           <BuyNowSection />
         </Element>
         <Element id="roadmap" name="roadmap">
-          <RoadmapSection id="roadmap" />
+          <RoadmapSection />
         </Element>
         <Element id="teamMeet" name="teamMeet">
-          <TeamMeetSection id="teamMeet" />
+          <TeamMeetSection />
+        </Element>
+        <Element id="support" name="support">
+          <FooterSection />
         </Element>
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   )
 }

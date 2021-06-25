@@ -6,8 +6,8 @@ const footerStyle = {
     backgroundColor: '#000000',
     display: 'flex',
     alignItems: 'center',
-    paddingTop: '47px',
-    paddingBottom: '10px',
+    marginTop: '47px',
+    marginBottom: '20px',
   },
   container: {
     ...containerFluid,
@@ -23,6 +23,7 @@ const footerStyle = {
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     paddingBottom: '10px',
+    paddingTop: '10px',
   },
   text: {
     color: 'rgba(255, 255, 255, 1)',
@@ -54,6 +55,7 @@ const footerStyle = {
   imageLine: {
     alignItems: 'center',
     display: 'flex',
+    justifyContent: 'center',
   },
   socialAvatar: {
     width: '30px',

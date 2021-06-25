@@ -5,12 +5,14 @@ const roadmapSectionStyle = {
     width: '100%',
     position: 'relative',
     backgroundColor: 'black',
-    paddingBottom: '64px',
+    paddingBottom: '30px',
+    paddingTop: '94px',
   },
   roadmapTitle: {
     color: '#F53EDA !important',
   },
   title: {
+    fontFamily: 'DaysOneRegular',
     fontWeight: 700,
     '@media (max-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
     '@media (min-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
@@ -28,11 +30,11 @@ const roadmapSectionStyle = {
     ...container,
   },
   content: {
-    '@media (max-width: 600px)': { paddingTop: '16px' },
-    '@media (min-width: 600px)': { paddingTop: '20px' },
-    '@media (min-width: 768px)': { paddingTop: '30px' },
-    '@media (min-width: 960px)': { paddingTop: '40px' },
-    '@media (min-width: 1280px)': { paddingTop: '46px' },
+    '@media (max-width: 600px)': { paddingTop: '5px' },
+    '@media (min-width: 600px)': { paddingTop: '10px' },
+    '@media (min-width: 768px)': { paddingTop: '10px' },
+    '@media (min-width: 960px)': { paddingTop: '15px' },
+    '@media (min-width: 1280px)': { paddingTop: '15px' },
   },
 }
 

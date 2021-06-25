@@ -12,7 +12,7 @@ import twitter from 'assets/images/Home/twitter.svg'
 
 const useStyles = makeStyles(styles)
 
-const Footer = () => {
+const FooterSection = () => {
   const classes = useStyles()
 
   return (
@@ -56,4 +56,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default FooterSection

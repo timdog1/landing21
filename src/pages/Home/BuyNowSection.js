@@ -22,10 +22,11 @@ const WalletButton = withStyles(() => ({
     '&:hover': {
       backgroundColor: '#CCCCCC',
     },
-    fontWeight: '700',
+    fontWeight: '800',
     borderRadius: '25px',
     padding: '10px 15px',
     textTransform: 'none',
+    fontFamily: 'sans-serif',
     width: '130px',
     margin: '20px',
   },
@@ -41,7 +42,8 @@ const BuyButton = withStyles(() => ({
     fontWeight: '700',
     borderRadius: '25px',
     padding: '10px 15px',
-    textTransform: 'none',
+    fontFamily: 'sans-serif',
+    // textTransform: 'none',
     width: '130px',
     margin: '20px',
   },
@@ -51,18 +53,18 @@ const BuyNowSection = () => {
   const classes = useStyles()
   const globalClasses = useGlobalStyles()
   return (
-    <Box className={classes.ecosystemSectionArea}>
+    <Box className={classes.buyNowSectionArea}>
       <Box className={classes.quantityContainer}>
         <Box className={classes.container}>
-          <Grid container display="flex" alignItems="center" justify="space-between">
-            <Grid item xs={12} sm={12} md={4} lg={3}>
-              <Box display="flex" justifyContent="center" mb={4.5}>
+          <Grid container display="flex" alignItems="center" justify="center">
+            <Grid item xs={12} sm={12} md={4} lg={4}>
+              <Box display="flex" justifyContent="center" mb={5}>
                 <img src={walletImage} className={classes.walletArea} />
               </Box>
             </Grid>
-            <Grid item xs={12} sm={12} md={8} lg={9}>
-              <Box className={classes.titleArea}>
-                <Typography className={classes.title}>Get Your Astrohedz!</Typography>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Box className={classes.titleBottom}>
+                <Typography className={clsx(classes.title, classes.quantityTitle)}>Get Your Astrohedz!</Typography>
               </Box>
               <Box className={classes.textContentArea}>
                 <Typography className={classes.text31}>Limited to 30 per mint.</Typography>
@@ -84,7 +86,7 @@ const BuyNowSection = () => {
               </Box>
               <Box className={classes.textContentArea}>
                 <WalletButton variant="contained" color="primary" className={classes.wallet}>
-                  Linked Wallet
+                  Link Wallet
                 </WalletButton>
                 <BuyButton variant="contained" color="primary" className={classes.roadmap}>
                   Buy now!
@@ -141,7 +143,7 @@ const BuyNowSection = () => {
       <Box className={classes.gameContainer}>
         <Box className={classes.container}>
           <Box className={classes.content}>
-            <Typography className={classes.title}>THE GAMES</Typography>
+            <Typography className={classes.title}>THE GAME</Typography>
             <Grid container display="flex" alignItems="center" justify="space-around" spacing={7}>
               <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
                 <img src={gameAvatar1} />
@@ -157,24 +159,31 @@ const BuyNowSection = () => {
               </Grid>
             </Grid>
             <Box className={classes.featureContainer}>
-              <Grid container display="flex" alignItems="center" justify="center" spacing={7}>
+              <Grid container display="flex" alignItems="center" justify="center" spacing={4}>
                 <Grid item xs={12} sm={12} md={5} lg={5}>
                   <img src={featureAvatar} className={classes.featureAvatar} />
                 </Grid>
-                <Grid item xs={12} sm={12} md={7} lg={7} className={classes.gameAvatar}>
+                <Grid item xs={12} sm={12} md={5} lg={5} className={classes.gameAvatar}>
                   <Box className={classes.featureText}>
                     <Typography className={classes.featureDescription}>
-                      When you roadmap Astrohedz, in addition to getting an awesome avatar and a provably-rare (and
-                      obviously stellar ) piece of digital art, you are gaining access to an intergalactic community
-                      that will participate in adn create fun activities as well as have early access ( and perkys ) in
-                      ouer upcoming game. One of the best features that the Astrohedz community offers is that
-                      Astrohodlers will play an intergral part in developing our game. The game is for everyone... so we
-                      think everyone should have a say in what we do?
+                      The Astrohedz game is Currently in development. <br />
+                      We are designing some pretty freakin&apos; awesome features.
                     </Typography>
                   </Box>
                 </Grid>
               </Grid>
             </Box>
+            <Typography className={globalClasses.text21}>
+              The Astrohedz Game is going to having a crafting function where you will be able to harvest resources and
+              turn them into items (NFTs) that will get you further into the game. You can get a plot of land where you
+              can begin to build your empire and choose from farming, hunting monsters or foraging resources (or all of
+              them) that then can then be sold or traded with other players ( on the secondary market ). <br />
+              It will be initially open to only Astrohedz NFT hodlers but will eventually open up to the public with
+              eclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
+              FREE plot of land).
+              <br />
+              Basically its going to be awesome... More information will be coming soon.
+            </Typography>
           </Box>
         </Box>
       </Box>

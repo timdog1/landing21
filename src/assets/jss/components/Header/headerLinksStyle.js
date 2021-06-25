@@ -67,6 +67,8 @@ const headerLinksStyle = theme => ({
     fontWeight: 800,
     borderRadius: '25px',
     fontSize: '15px',
+    width: 85,
+    margin: 'auto',
   },
   headerTitle: {
     color: 'white',
