@@ -158,20 +158,25 @@ const BuyNowSection = () => {
                 <img src={gameAvatar4} />
               </Grid>
             </Grid>
-            <Box className={classes.featureContainer}>
-              <Grid container display="flex" alignItems="center" justify="center" spacing={4}>
-                <Grid item xs={12} sm={12} md={5} lg={5}>
-                  <img src={featureAvatar} className={classes.featureAvatar} />
+            <Box className={classes.featurePosition}>
+              <Box className={classes.featureContainer}>
+                <Grid container display="flex" alignItems="center" justify="center" spacing={4}>
+                  <Grid item xs={12} sm={12} md={5} lg={5}>
+                    <img src={featureAvatar} className={classes.featureAvatar} />
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={6} lg={6} className={classes.gameAvatar}>
+                    <Box style={{ position: 'relative' }}>
+                      <Box className={classes.featureText}>
+                        <Typography className={classes.featureDescription}>
+                          The Astrohedz game is Currently in development. <br />
+                          We are designing some pretty freakin&apos; awesome features.
+                        </Typography>
+                      </Box>
+                      <Box className={classes.arrowDirection} />
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} md={5} lg={5} className={classes.gameAvatar}>
-                  <Box className={classes.featureText}>
-                    <Typography className={classes.featureDescription}>
-                      The Astrohedz game is Currently in development. <br />
-                      We are designing some pretty freakin&apos; awesome features.
-                    </Typography>
-                  </Box>
-                </Grid>
-              </Grid>
+              </Box>
             </Box>
             <Typography className={globalClasses.text21}>
               The Astrohedz Game is going to having a crafting function where you will be able to harvest resources and
