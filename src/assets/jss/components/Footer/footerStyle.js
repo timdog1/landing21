@@ -6,8 +6,8 @@ const footerStyle = {
     backgroundColor: '#000000',
     display: 'flex',
     alignItems: 'center',
-    marginTop: '47px',
-    marginBottom: '20px',
+    marginTop: '80px',
+    marginBottom: '40px',
   },
   container: {
     ...containerFluid,

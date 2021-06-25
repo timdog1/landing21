@@ -24,10 +24,12 @@ const buyNowSectionStyle = {
   },
   detailContainer: {
     paddingTop: 40,
+    paddingBottom: 30,
     backgroundColor: '#000000',
   },
   galaxyContainer: {
     paddingTop: 40,
+    paddingBottom: 30,
     backgroundColor: '#38EB28',
   },
   galaxyTitle: {
@@ -54,6 +56,8 @@ const buyNowSectionStyle = {
   featurePosition: {
     display: 'flex',
     justifyContent: 'center',
+    marginTop: '25px',
+    marginBottom: '20px',
   },
   featureText: {
     backgroundColor: 'white',
@@ -80,7 +84,6 @@ const buyNowSectionStyle = {
     letterSpacing: 'normal',
     lineHeight: 1.42857143,
     textAlign: 'left',
-    // textAlign: 'start',
     textShadow: 'none',
     textTransform: 'none',
     whiteSpace: 'normal',
@@ -90,16 +93,12 @@ const buyNowSectionStyle = {
     fontSize: 12,
     display: 'inline-block',
     marginLeft: '-20px',
-    // borderWidth: '5px 5px 5px 0',
-    // borderRightColor: '#000',
-    // borderRight: '50px solid transparent',
     borderLeft: '50px solid transparent',
     borderTop: '40px solid #FFFFFF',
     '@media (max-width: 960px)': {
       top: '0%',
       left: '50%',
       borderTop: '50px solid transparent',
-      borderBottom: '50px solid transparent',
       borderLeft: '50px solid #FFFFFF',
       marginTop: '-20px',
     },
@@ -177,7 +176,7 @@ const buyNowSectionStyle = {
     letterSpacing: '1.47px',
     color: '#FFFFFF',
     justifyContent: 'center',
-    marginBottom: 30,
+    marginBottom: 38,
   },
   gameAvatar: {
     textAlign: 'center',

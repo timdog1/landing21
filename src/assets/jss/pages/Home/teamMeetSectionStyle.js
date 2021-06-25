@@ -4,7 +4,7 @@ const teamMeetSectionStyle = {
   plutexSwapSectionArea: {
     width: '100%',
     position: 'relative',
-    paddingTop: '94px',
+    paddingTop: '50px',
   },
   gameContainer: {
     paddingTop: 10,
@@ -34,11 +34,11 @@ const teamMeetSectionStyle = {
     maxWidth: '300px',
   },
   content: {
-    '@media (max-width: 600px)': { marginTop: '20px' },
-    '@media (min-width: 600px)': { marginTop: '20px' },
-    '@media (min-width: 768px)': { marginTop: '20px' },
-    '@media (min-width: 960px)': { marginTop: '30px' },
-    '@media (min-width: 1280px)': { marginTop: '30px' },
+    '@media (max-width: 600px)': { marginTop: '30px' },
+    '@media (min-width: 600px)': { marginTop: '30px' },
+    '@media (min-width: 768px)': { marginTop: '35px' },
+    '@media (min-width: 960px)': { marginTop: '40px' },
+    '@media (min-width: 1280px)': { marginTop: '40px' },
   },
 }
 

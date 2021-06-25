@@ -71,15 +71,15 @@ const headerStyle = {
     height: '90px',
   },
   menuButton: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     '&:hover': {
-      background: '#ddd',
+      background: '#1c1c1c',
     },
     minWidth: '34px',
     minHeight: '34px',
   },
   menuIcon: {
-    color: '#000',
+    color: '#fff',
   },
   appResponsive: {
     margin: '20px 10px',

@@ -21,7 +21,14 @@ const TeamMeetSection = () => {
           <Box className={classes.content}>
             <Typography className={classes.title}>MEET THE TEAM</Typography>
             <Box className={classes.featureContainer}>
-              <Grid container display="flex" alignItems="center" justify="center" spacing={7}>
+              <Grid
+                container
+                display="flex"
+                alignItems="center"
+                justify="center"
+                spacing={7}
+                style={{ paddingTop: '10px' }}
+              >
                 <Grid item xs={12} sm={12} md={5} lg={5} style={{ textAlign: 'center' }}>
                   <img src={meetAvatar} className={classes.meetAvatar} />
                 </Grid>

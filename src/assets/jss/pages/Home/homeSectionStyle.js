@@ -34,7 +34,7 @@ const homeSectionStyle = {
   title: {
     fontFamily: 'DaysOneRegular',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 38,
     '@media (max-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
     '@media (min-width: 600px)': { fontSize: '30px', lineHeight: '40px' },
     '@media (min-width: 768px)': { fontSize: '35px', lineHeight: '50px' },

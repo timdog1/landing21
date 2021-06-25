@@ -46,7 +46,7 @@ const FooterSection = () => {
             </Grid>
           </Grid>
         </Box>
-        <Box style={{ marginTop: 10 }}>
+        <Box style={{ marginTop: 40 }}>
           <Typography className={classes.text}>
             Astrohedz, All Right Reserved (accross this galaxy and any other).
           </Typography>

@@ -144,7 +144,14 @@ const BuyNowSection = () => {
         <Box className={classes.container}>
           <Box className={classes.content}>
             <Typography className={classes.title}>THE GAME</Typography>
-            <Grid container display="flex" alignItems="center" justify="space-around" spacing={7}>
+            <Grid
+              container
+              display="flex"
+              alignItems="center"
+              justify="space-around"
+              spacing={7}
+              style={{ paddingTop: '8px' }}
+            >
               <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
                 <img src={gameAvatar1} />
               </Grid>
@@ -183,9 +190,11 @@ const BuyNowSection = () => {
               turn them into items (NFTs) that will get you further into the game. You can get a plot of land where you
               can begin to build your empire and choose from farming, hunting monsters or foraging resources (or all of
               them) that then can then be sold or traded with other players ( on the secondary market ). <br />
+              <br />
               It will be initially open to only Astrohedz NFT hodlers but will eventually open up to the public with
               eclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
               FREE plot of land).
+              <br />
               <br />
               Basically its going to be awesome... More information will be coming soon.
             </Typography>
