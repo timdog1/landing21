@@ -24,10 +24,11 @@ const RoadmapSection = () => {
 
   return (
     <Box className={classes.buySectionArea}>
-      <Box className={classes.container}>
-        <Box className={classes.content}>
-          <Typography className={clsx(classes.roadmapTitle, classes.title)}>ROADMAP</Typography>
-        </Box>
+      {/* <Box className={classes.container}> */}
+      <Box className={classes.content}>
+        <Typography className={clsx(classes.roadmapTitle, classes.title)}>ROADMAP</Typography>
+      </Box>
+      <Box className={classes.roadmapContainer}>
         <Box style={{ marginLeft: '60px' }}>
           <Roadmap image={roadmap1} percentage={10} description={'We pay our dads back'} />
         </Box>
@@ -75,6 +76,7 @@ const RoadmapSection = () => {
           />
         </Box>
       </Box>
+      {/* </Box> */}
     </Box>
   )
 }

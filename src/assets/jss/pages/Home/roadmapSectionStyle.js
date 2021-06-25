@@ -6,7 +6,7 @@ const roadmapSectionStyle = {
     position: 'relative',
     backgroundColor: 'black',
     // paddingBottom: '30px',
-    paddingTop: '94px',
+    paddingTop: '104px',
   },
   roadmapTitle: {
     color: '#F53EDA !important',
@@ -29,13 +29,22 @@ const roadmapSectionStyle = {
   container: {
     ...container,
   },
-  content: {
-    '@media (max-width: 600px)': { paddingTop: '15px' },
-    '@media (min-width: 600px)': { paddingTop: '15px' },
-    '@media (min-width: 768px)': { paddingTop: '15px' },
-    '@media (min-width: 960px)': { paddingTop: '15px' },
-    '@media (min-width: 1280px)': { paddingTop: '15px' },
+  roadmapContainer: {
+    margin: 'auto',
+    marginTop: '70px',
+    '@media (max-width: 600px)': { width: '480px' },
+    '@media (min-width: 600px)': { width: '500px' },
+    '@media (min-width: 768px)': { width: '600px' },
+    '@media (min-width: 960px)': { width: '750px' },
+    '@media (min-width: 1280px)': { width: '850px' },
   },
+  // content: {
+  //   '@media (max-width: 600px)': { paddingTop: '15px' },
+  //   '@media (min-width: 600px)': { paddingTop: '15px' },
+  //   '@media (min-width: 768px)': { paddingTop: '15px' },
+  //   '@media (min-width: 960px)': { paddingTop: '15px' },
+  //   '@media (min-width: 1280px)': { paddingTop: '15px' },
+  // },
 }
 
 export default roadmapSectionStyle
