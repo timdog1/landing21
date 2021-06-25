@@ -4,7 +4,7 @@ const teamMeetSectionStyle = {
   plutexSwapSectionArea: {
     width: '100%',
     position: 'relative',
-    paddingTop: '50px',
+    paddingTop: '94px',
   },
   gameContainer: {
     paddingTop: 10,
