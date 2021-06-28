@@ -52,6 +52,15 @@ const BuyButton = withStyles(() => ({
 const BuyNowSection = () => {
   const classes = useStyles()
   const globalClasses = useGlobalStyles()
+
+  const handleClickWallet = () => {
+    console.log('handleClickWallet')
+  }
+
+  const handleClickBuy = () => {
+    console.log('handleClickBuy')
+  }
+
   return (
     <Box className={classes.buyNowSectionArea}>
       <Box className={classes.quantityContainer}>
@@ -85,10 +94,10 @@ const BuyNowSection = () => {
                 </Box>
               </Box>
               <Box className={classes.textContentArea}>
-                <WalletButton variant="contained" color="primary" className={classes.wallet}>
+                <WalletButton variant="contained" className={classes.wallet} onClick={handleClickWallet}>
                   Link Wallet
                 </WalletButton>
-                <BuyButton variant="contained" color="primary" className={classes.roadmap}>
+                <BuyButton variant="contained" className={classes.roadmap} onClick={handleClickBuy}>
                   Buy now!
                 </BuyButton>
               </Box>
