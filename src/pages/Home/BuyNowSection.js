@@ -53,8 +53,31 @@ const BuyNowSection = () => {
   const classes = useStyles()
   const globalClasses = useGlobalStyles()
 
-  const handleClickWallet = () => {
+  const handleClickWallet = async () => {
     console.log('handleClickWallet')
+    if (window.ethereum) {
+      //check if Metamask is installed
+      try {
+        const address = await window.ethereum.enable() //connect Metamask
+        console.log('obj +++++++++++', address)
+        const obj = {
+          connectedStatus: true,
+          status: '',
+          address: address,
+        }
+        return obj
+      } catch (error) {
+        return {
+          connectedStatus: false,
+          status: '🦊 Connect to Metamask using the button on the top right.',
+        }
+      }
+    } else {
+      return {
+        connectedStatus: false,
+        status: '🦊 You must install Metamask into your browser: https://metamask.io/download.html',
+      }
+    }
   }
 
   const handleClickBuy = () => {
