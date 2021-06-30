@@ -94,7 +94,7 @@ const BuyNowSection = () => {
     if (quantity === '') {
       toast.error(INPUT_VALUE)
       return
-    } else if (quantity > 30 && quantity < 1) {
+    } else if (quantity > 30 || quantity < 1) {
       toast.error(MAX_VALUE)
       setQuantity('')
       return
