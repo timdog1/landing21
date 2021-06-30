@@ -186,6 +186,11 @@ const buyNowSectionStyle = {
     maxWidth: '300px',
     borderRadius: '10px',
   },
+  progressContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }
 
 export default buyNowSectionStyle

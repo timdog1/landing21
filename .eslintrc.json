@@ -4,7 +4,7 @@
     "es6": true
   },
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  // "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -20,18 +20,18 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-hooks"],
-  "rules": {
-    "react/display-name": 0,
-    "react/prop-types": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
-  },
+  // "rules": {
+  //   "react/display-name": 0,
+  //   "react/prop-types": 0,
+  //   "react-hooks/rules-of-hooks": "error",
+  //   "react-hooks/exhaustive-deps": "error",
+  //   "prettier/prettier": [
+  //     "error",
+  //     {
+  //       "endOfLine": "auto"
+  //     }
+  //   ]
+  // },
   "settings": {
     "react": {
       "version": "detected"

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Grid, Typography } from '@material-ui/core'
+import React, { useContext, useEffect, useState } from 'react'
+import { Box, Grid, Typography, CircularProgress } from '@material-ui/core'
 // images
 import walletImage from 'assets/images/Home/feature.png'
 import gameAvatar1 from 'assets/images/Home/yellow_monster.gif'
@@ -11,9 +11,19 @@ import clsx from 'clsx'
 import { makeStyles, withStyles, TextField, Button } from '@material-ui/core'
 import styles from 'assets/jss/pages/Home/buyNowSectionStyle'
 import globalStyles from 'assets/jss/PLUTEX'
+import toast from 'react-hot-toast'
+import { Web3Context } from 'utils/Web3Provider'
 
 const useStyles = makeStyles(styles)
 const useGlobalStyles = makeStyles(globalStyles)
+
+const MAX_VALUE = 'You can enter up to 30'
+const INPUT_VALUE = 'You must input quantity'
+const WRONG_NETWORK = 'You should connect to the Ethereum Mainnet'
+const SUCCSESS_CONNECTED = 'Successfully connected to the Ethereum Mainnet'
+const WAIT_METAMASK = 'Please wait a moment.'
+const SUCCESS_BUY = 'Successfully buy'
+const APE_PRICE = 0.08 //0.08 ETH
 
 const WalletButton = withStyles(() => ({
   root: {
@@ -53,192 +63,240 @@ const BuyNowSection = () => {
   const classes = useStyles()
   const globalClasses = useGlobalStyles()
 
+  const { connectionStatus, notifyLabel, balance, address, walletInstalledStatus, loadWeb3, nftToken } =
+    useContext(Web3Context)
+  const [quantity, setQuantity] = useState('')
+  const [progressStatus, setProgressStatus] = useState(false)
+
   const handleClickWallet = async () => {
-    console.log('handleClickWallet')
-    if (window.ethereum) {
-      //check if Metamask is installed
-      try {
-        const address = await window.ethereum.enable() //connect Metamask
-        console.log('obj +++++++++++', address)
-        const obj = {
-          connectedStatus: true,
-          status: '',
-          address: address,
-        }
-        return obj
-      } catch (error) {
-        return {
-          connectedStatus: false,
-          status: '🦊 Connect to Metamask using the button on the top right.',
-        }
-      }
+    if (connectionStatus) {
+      toast.success(SUCCSESS_CONNECTED)
+    }
+    await loadWeb3()
+  }
+
+  useEffect(() => {
+    if (connectionStatus) {
+      toast.success(notifyLabel)
     } else {
-      return {
-        connectedStatus: false,
-        status: '🦊 You must install Metamask into your browser: https://metamask.io/download.html',
+      if (notifyLabel !== '') {
+        toast.error(notifyLabel)
       }
+    }
+  }, [notifyLabel])
+
+  useEffect(() => {
+    if (!walletInstalledStatus)
+      window.open('https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en', '_blank')
+  }, [walletInstalledStatus])
+
+  const handleClickBuy = () => {
+    if (quantity === '') {
+      toast.error(INPUT_VALUE)
+      return
+    } else if (quantity > 30 && quantity < 1) {
+      toast.error(MAX_VALUE)
+      setQuantity('')
+      return
+    }
+    if (!connectionStatus) {
+      toast.error(WRONG_NETWORK)
+      return
+    }
+    toast.success(WAIT_METAMASK)
+    setProgressStatus(true)
+    nftToken.methods
+      .mintApe(quantity)
+      .send({ from: address, value: window.web3.utils.toWei((quantity * APE_PRICE).toString()) })
+      .then(data => {
+        console.log(data)
+        if (data.status) {
+          toast.success(SUCCESS_BUY)
+          setProgressStatus(false)
+        }
+      })
+  }
+
+  const handleChangeQuantity = event => {
+    const reg = /^\d+$/
+    if (event.target.value === '' || reg.test(event.target.value)) {
+      setQuantity(event.target.value)
     }
   }
 
-  const handleClickBuy = () => {
-    console.log('handleClickBuy')
-  }
-
   return (
-    <Box className={classes.buyNowSectionArea}>
-      <Box className={classes.quantityContainer}>
-        <Box className={classes.container}>
-          <Grid container display="flex" alignItems="center" justify="center">
-            <Grid item xs={12} sm={12} md={4} lg={4}>
-              <Box display="flex" justifyContent="center" mb={5}>
-                <img src={walletImage} className={classes.walletArea} />
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <Box className={classes.titleBottom}>
-                <Typography className={clsx(classes.title, classes.quantityTitle)}>Get Your Astrohedz!</Typography>
-              </Box>
-              <Box className={classes.textContentArea}>
-                <Typography className={classes.text31}>Limited to 30 per mint.</Typography>
-              </Box>
-              <Box className={classes.textContentArea}>
-                <Box className={classes.text31}>
-                  <Typography className={classes.text31} gutterBottom>
-                    Quantity
-                  </Typography>
+    <>
+      <Box className={classes.buyNowSectionArea}>
+        <Box className={classes.quantityContainer}>
+          <Box className={classes.container}>
+            <Grid container display="flex" alignItems="center" justify="center">
+              <Grid item xs={12} sm={12} md={4} lg={4}>
+                <Box display="flex" justifyContent="center" mb={5}>
+                  <img src={walletImage} className={classes.walletArea} />
                 </Box>
-                <Box>
-                  <TextField
-                    id="text-quantity"
-                    variant="outlined"
-                    className={classes.textQuantity}
-                    // style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 25 }}
-                  />
+              </Grid>
+              <Grid item xs={12} sm={12} md={6} lg={6}>
+                <Box className={classes.titleBottom}>
+                  <Typography className={clsx(classes.title, classes.quantityTitle)}>Get Your Astrohedz!</Typography>
                 </Box>
-              </Box>
-              <Box className={classes.textContentArea}>
-                <WalletButton variant="contained" className={classes.wallet} onClick={handleClickWallet}>
-                  Link Wallet
-                </WalletButton>
-                <BuyButton variant="contained" className={classes.roadmap} onClick={handleClickBuy}>
-                  Buy now!
-                </BuyButton>
-              </Box>
+                <Box className={classes.textContentArea}>
+                  <Typography className={classes.text31}>Limited to 30 per mint.</Typography>
+                </Box>
+                <Box className={classes.textContentArea}>
+                  <Box className={classes.text31}>
+                    <Typography className={classes.text31} gutterBottom>
+                      Quantity
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <TextField
+                      id="text-quantity"
+                      variant="outlined"
+                      value={quantity}
+                      className={classes.textQuantity}
+                      onChange={handleChangeQuantity}
+                    />
+                  </Box>
+                </Box>
+                <Box className={classes.textContentArea}>
+                  <WalletButton variant="contained" className={classes.wallet} onClick={handleClickWallet}>
+                    Link Wallet
+                  </WalletButton>
+                  <BuyButton
+                    variant="contained"
+                    className={classes.roadmap}
+                    onClick={handleClickBuy}
+                    disabled={progressStatus}
+                  >
+                    Buy now!
+                  </BuyButton>
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-      </Box>
-      <Box className={classes.detailContainer}>
-        <Box className={classes.container}>
-          <Box className={classes.content}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography className={classes.title}>The Details</Typography>
-              <Typography className={globalClasses.text21}>
-                All Astrohedz are unique and programmatically generated from four different alien species with over 800
-                possible traits, including body type, clothing, eyes, mouth, headwear, and background. Even though all
-                Astrohedz are out of this world, some are slightly (or astronomically) more rare than others.
-                <br />
-                <br /> Astrohedz are stored as ERC-721 tokens on ther Ethereum blockchain and hosted on IPFS. Purchasing
-                Astrohedz cost 0.07ETH.
-                <br />
-                <br /> To access members-only areas such as the upcoming game, Astrohodlers will need to be signed into
-                their Metamask Wallet.
-              </Typography>
-              <Typography variant="h5" className={classes.distribution}>
-                <br />
-                FAIR DISTRIBUTION
-              </Typography>
-              <Typography className={globalClasses.text21}>
-                Aliens form the Enefty Galaxy hate bonding curves. That&apos;s why we don&apos;t use them. Buying an
-                Astrohed costs 0.07 ETH. Because we believe that every one ( no matter what planet you&apos;re from) is
-                equal ( except for Narfnarfs of course... every hates Narfnarfs.)
-              </Typography>
-            </Grid>
+            {progressStatus ? (
+              <>
+                <div className={classes.progressContainer}>
+                  <CircularProgress className={classes.progress} />
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </Box>
         </Box>
-      </Box>
-      <Box className={classes.galaxyContainer}>
-        <Box className={classes.container}>
-          <Box className={classes.content}>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Typography className={clsx(classes.galaxyTitle, classes.title)}>
-                Welcome to the Astrohedz Galaxy
-              </Typography>
-              <Typography className={clsx(globalClasses.text21, classes.galaxyDescription)}>
-                When you roadmap Astrohedz, in addition to getting an awesome avatar and a provably-rare (and obviously
-                stellar ) piece of digital art, you are gaining access to an intergalactic community that will
-                participate in adn create fun activities as well as have early access ( and perkys ) in our upcoming
-                game. One of the best features that the Astrohedz community offers is that Astrohodlers will play an
-                integral part in developing our game. The game is for everyone... so we think everyone should have a say
-                in what we do?
-              </Typography>
-            </Grid>
-          </Box>
-        </Box>
-      </Box>
-      <Box className={classes.gameContainer}>
-        <Box className={classes.container}>
-          <Box className={classes.content}>
-            <Typography className={classes.title}>THE GAME</Typography>
-            <Grid
-              container
-              display="flex"
-              alignItems="center"
-              justify="space-around"
-              spacing={7}
-              style={{ paddingTop: '8px' }}
-            >
-              <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
-                <img src={gameAvatar1} />
+        <Box className={classes.detailContainer}>
+          <Box className={classes.container}>
+            <Box className={classes.content}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Typography className={classes.title}>The Details</Typography>
+                <Typography className={globalClasses.text21}>
+                  All Astrohedz are unique and programmatically generated from four different alien species with over
+                  800 possible traits, including body type, clothing, eyes, mouth, headwear, and background. Even though
+                  all Astrohedz are out of this world, some are slightly (or astronomically) more rare than others.
+                  <br />
+                  <br /> Astrohedz are stored as ERC-721 tokens on ther Ethereum blockchain and hosted on IPFS.
+                  Purchasing Astrohedz cost 0.07ETH.
+                  <br />
+                  <br /> To access members-only areas such as the upcoming game, Astrohodlers will need to be signed
+                  into their Metamask Wallet.
+                </Typography>
+                <Typography variant="h5" className={classes.distribution}>
+                  <br />
+                  FAIR DISTRIBUTION
+                </Typography>
+                <Typography className={globalClasses.text21}>
+                  Aliens form the Enefty Galaxy hate bonding curves. That&apos;s why we don&apos;t use them. Buying an
+                  Astrohed costs 0.07 ETH. Because we believe that every one ( no matter what planet you&apos;re from)
+                  is equal ( except for Narfnarfs of course... every hates Narfnarfs.)
+                </Typography>
               </Grid>
-              <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
-                <img src={gameAvatar2} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
-                <img src={gameAvatar3} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
-                <img src={gameAvatar4} />
-              </Grid>
-            </Grid>
-            <Box className={classes.featurePosition}>
-              <Box className={classes.featureContainer}>
-                <Grid container display="flex" alignItems="center" justify="center" spacing={4}>
-                  <Grid item xs={12} sm={12} md={5} lg={5}>
-                    <img src={featureAvatar} className={classes.featureAvatar} />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6} className={classes.gameAvatar}>
-                    <Box style={{ position: 'relative' }}>
-                      <Box className={classes.featureText}>
-                        <Typography className={classes.featureDescription}>
-                          The Astrohedz game is currently in development. <br />
-                          We are designing some pretty freakin&apos; awesome features.
-                        </Typography>
-                      </Box>
-                      <Box className={classes.arrowDirection} />
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Box>
             </Box>
-            <Typography className={globalClasses.text21}>
-              The Astrohedz Game is going to having a crafting function where you will be able to harvest resources and
-              turn them into items (NFTs) that will get you further into the game. You can get a plot of land where you
-              can begin to build your empire and choose from farming, hunting monsters or foraging resources (or all of
-              them) that then can then be sold or traded with other players ( on the secondary market ). <br />
-              <br />
-              It will be initially open to only Astrohedz NFT hodlers but will eventually open up to the public with
-              exclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
-              FREE plot of land).
-              <br />
-              <br />
-              Basically its going to be awesome... More information will be coming soon.
-            </Typography>
           </Box>
         </Box>
+        <Box className={classes.galaxyContainer}>
+          <Box className={classes.container}>
+            <Box className={classes.content}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Typography className={clsx(classes.galaxyTitle, classes.title)}>
+                  Welcome to the Astrohedz Galaxy
+                </Typography>
+                <Typography className={clsx(globalClasses.text21, classes.galaxyDescription)}>
+                  When you roadmap Astrohedz, in addition to getting an awesome avatar and a provably-rare (and
+                  obviously stellar ) piece of digital art, you are gaining access to an intergalactic community that
+                  will participate in adn create fun activities as well as have early access ( and perkys ) in our
+                  upcoming game. One of the best features that the Astrohedz community offers is that Astrohodlers will
+                  play an integral part in developing our game. The game is for everyone... so we think everyone should
+                  have a say in what we do?
+                </Typography>
+              </Grid>
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.gameContainer}>
+          <Box className={classes.container}>
+            <Box className={classes.content}>
+              <Typography className={classes.title}>THE GAME</Typography>
+              <Grid
+                container
+                display="flex"
+                alignItems="center"
+                justify="space-around"
+                spacing={7}
+                style={{ paddingTop: '8px' }}
+              >
+                <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
+                  <img src={gameAvatar1} />
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
+                  <img src={gameAvatar2} />
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
+                  <img src={gameAvatar3} />
+                </Grid>
+                <Grid item xs={12} sm={6} md={3} lg={3} className={classes.gameAvatar}>
+                  <img src={gameAvatar4} />
+                </Grid>
+              </Grid>
+              <Box className={classes.featurePosition}>
+                <Box className={classes.featureContainer}>
+                  <Grid container display="flex" alignItems="center" justify="center" spacing={4}>
+                    <Grid item xs={12} sm={12} md={5} lg={5}>
+                      <img src={featureAvatar} className={classes.featureAvatar} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6} lg={6} className={classes.gameAvatar}>
+                      <Box style={{ position: 'relative' }}>
+                        <Box className={classes.featureText}>
+                          <Typography className={classes.featureDescription}>
+                            The Astrohedz game is currently in development. <br />
+                            We are designing some pretty freakin&apos; awesome features.
+                          </Typography>
+                        </Box>
+                        <Box className={classes.arrowDirection} />
+                      </Box>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+              <Typography className={globalClasses.text21}>
+                The Astrohedz Game is going to having a crafting function where you will be able to harvest resources
+                and turn them into items (NFTs) that will get you further into the game. You can get a plot of land
+                where you can begin to build your empire and choose from farming, hunting monsters or foraging resources
+                (or all of them) that then can then be sold or traded with other players ( on the secondary market ).{' '}
+                <br />
+                <br />
+                It will be initially open to only Astrohedz NFT hodlers but will eventually open up to the public with
+                exclusive features and benefits that are only available to hodlers of Astrohedz (e.g. Astrohodlers get a
+                FREE plot of land).
+                <br />
+                <br />
+                Basically its going to be awesome... More information will be coming soon.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.gameBottomContainer}>{/* <img src={gameBottomImg} /> */}</Box>
       </Box>
-      <Box className={classes.gameBottomContainer}>{/* <img src={gameBottomImg} /> */}</Box>
-    </Box>
+    </>
   )
 }
 
