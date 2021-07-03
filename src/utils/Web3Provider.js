@@ -1,7 +1,7 @@
 import React from 'react'
 import Web3 from 'web3'
 import NFT from 'abis/NFT.json'
-import { REACT_APP_CHAINID, REACT_APP_APETOKEN_ADDRESS } from 'utils/config'
+import { REACT_APP_CHAINID, REACT_APP_ASTRO_TOKEN_ADDRESS } from 'utils/config'
 
 const WRONG_NETWORK = 'You should connect to the Ethereum Mainnet'
 const WRONG_ACCOUNT = "You don't have any account on the Ethereum Mainnet"
@@ -71,7 +71,7 @@ export class Web3Provider extends React.Component {
 
   getBlockchainData = async () => {
     let accounts = await window.web3.eth.getAccounts()
-    const nftToken = new web3.eth.Contract(NFT.abi, REACT_APP_APETOKEN_ADDRESS)
+    const nftToken = new web3.eth.Contract(NFT.abi, REACT_APP_ASTRO_TOKEN_ADDRESS)
     window.web3.eth.getBalance(accounts[0]).then(data => {
       let balance = Math.floor(data / 10000000000 + 0.5) / 100000000
       this.setState({

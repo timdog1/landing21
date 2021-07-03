@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Box, Grid, Typography, CircularProgress } from '@material-ui/core'
+import { Box, Grid, Typography } from '@material-ui/core'
 // images
 import walletImage from 'assets/images/Home/feature.png'
 import gameAvatar1 from 'assets/images/Home/yellow_monster.gif'
@@ -23,7 +23,7 @@ const WRONG_NETWORK = 'You should connect to the Ethereum Mainnet'
 const SUCCSESS_CONNECTED = 'Successfully connected to the Ethereum Mainnet'
 const WAIT_METAMASK = 'Please wait a moment.'
 const SUCCESS_BUY = 'Successfully buy'
-const APE_PRICE = 0.08 //0.08 ETH
+const ASTRO_PRICE = 0.07 //0.07 ETH
 
 const WalletButton = withStyles(() => ({
   root: {
@@ -106,13 +106,14 @@ const BuyNowSection = () => {
     toast.success(WAIT_METAMASK)
     setProgressStatus(true)
     nftToken.methods
-      .mintApe(quantity)
-      .send({ from: address, value: window.web3.utils.toWei((quantity * APE_PRICE).toString()) })
+      .mintAstro(quantity)
+      .send({ from: address, value: window.web3.utils.toWei((quantity * ASTRO_PRICE).toString()) })
       .then(data => {
         console.log(data)
         if (data.status) {
           toast.success(SUCCESS_BUY)
           setProgressStatus(false)
+          setQuantity('')
         }
       })
   }
@@ -173,15 +174,6 @@ const BuyNowSection = () => {
                 </Box>
               </Grid>
             </Grid>
-            {progressStatus ? (
-              <>
-                <div className={classes.progressContainer}>
-                  <CircularProgress className={classes.progress} />
-                </div>
-              </>
-            ) : (
-              <></>
-            )}
           </Box>
         </Box>
         <Box className={classes.detailContainer}>
